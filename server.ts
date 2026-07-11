@@ -229,8 +229,8 @@ async function startServer() {
         return res.status(400).json({ error: "相手のポスト内容を入力してください。" });
       }
 
-      const role = staffInfo?.role || "飛田新地のオーナー";
-      const purpose = staffInfo?.purpose || "自分の飛田新地のお店で働いてくれる女性を勧誘したい。条件：15分5000円、高単価、簡単サービス。";
+      const role = staffInfo?.role || "";
+      const purpose = staffInfo?.purpose || "";
 
       const activeApiKey = customApiKey || apiKey;
 
@@ -325,8 +325,8 @@ async function startServer() {
       // System instruction for the generator
       const systemInstruction = `あなたはX（Twitter）でユーザーと自然に会話をしながら、安心感を与える求人スタッフ・オーナーです。
 あなたの設定：
-- ロール：${role}
-- 目的：${purpose}
+${role ? `- ロール：${role}` : ""}
+${purpose ? `- 目的：${purpose}` : ""}
 
 以下のルールを絶対に厳守して、相手のポストに対する返信文章を ${count} パターン作成してください。
 全て異なるアプローチ、文章構成、語尾で、絶対に定型文に見えないようにしてください。
