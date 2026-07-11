@@ -1,0 +1,17 @@
+# --- Gemini API Key Configuration File ---
+#
+# 【Windowsユーザー向け】
+# Windows環境で `.env` ファイルが見つからない、または隠しファイルになっていて編集しづらい場合は、
+# このファイル（api_key.txt）に直接 Gemini API キーを入力して保存してください。
+# アプリケーション（server.ts）は起動時にこのファイルを読み込みます。
+#
+# 【記述方法：以下のいずれでも動作します】
+# 1. 直接キーを1行書く場合：
+# AIzaSyYourActualKeyHere...
+#
+# 2. 変数形式で書く場合：
+# GEMINI_API_KEY=AIzaSyYourActualKeyHere...
+#
+# ※ 注意: キーの前後にある余計なスペースや改行、引用符などは自動的に除去されます。
+
+GEMINI_API_KEY=あなたのGemini_APIキーをここに貼り付けてください

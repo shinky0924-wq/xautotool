@@ -1,0 +1,8 @@
+{
+  "name": "Remix: X Recruitment Reply Assistant",
+  "description": "自然な対話で安心感を与えるX（Twitter）求人返信文章自動生成アシスタント。求人スタッフ・オーナー向けにルールに沿った高品質な返信を作成します。",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

@@ -1,0 +1,11 @@
+name = "x-recruitment-assistant"
+compatibility_date = "2024-03-01"
+
+# Trigger redeploy to reflect environment variables
+[pages_build]
+directory = "dist"
+build_command = "npm run build"
+
+[vars]
+# Add your default model here if needed
+# GEMINI_API_KEY = "your_gemini_api_key"
