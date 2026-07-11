@@ -106,15 +106,11 @@ export default function App() {
   const DEFAULT_ACCOUNTS: AccountProfile[] = [
     {
       id: "account-test",
-      name: "test",
-      xId: "@test",
-      role: "test",
-      purpose: "test",
-      rules: [
-        "返信は45〜90文字程度（厳守）",
-        "相手を傷つけず、温かく寄り添う自然な返信にする",
-        "「絶対」「必ず」などの誇大・断定表現は使用禁止"
-      ]
+      name: "新規アカウント1",
+      xId: "@new_account",
+      role: "",
+      purpose: "",
+      rules: []
     }
   ];
 
@@ -150,13 +146,9 @@ export default function App() {
     id: "empty",
     name: "未登録",
     xId: "@none",
-    role: "お仕事アドバイザー（設定されていません）",
-    purpose: "未経験の方の相談相手になりつつ、適正に合った高収入案件へ繋げる。",
-    rules: [
-      "返信は45〜90文字程度（厳守）",
-      "相手を傷つけず、温かく寄り添う自然な返信にする",
-      "「絶対」「必ず」などの誇大・断定表現は使用禁止"
-    ]
+    role: "",
+    purpose: "",
+    rules: []
   };
 
   // Local state for active account character inputs (synced back)
@@ -441,16 +433,11 @@ export default function App() {
   const handleResetProfilesToBlankSlate = () => {
     const blankAccount: AccountProfile = {
       id: "account-custom-1",
-      name: "新規キャラクター",
-      xId: "@custom_handle",
-      role: "（例: 業界5年目の現役女子アドバイザー）",
-      purpose: "（例: 押し売りを一切せず、フラットに出稼ぎの相談相手になりつつ、適正に合った高収入案件にDMで繋げる）",
-      rules: [
-        "返信は45〜90文字程度（厳守）",
-        "相手を傷つけず、温かく寄り添う自然な返信にする",
-        "「絶対」「必ず」などの誇大・断定表現は使用禁止",
-        "ビジネス的な堅い表現を避け、親しみやすい会話調にする"
-      ]
+      name: "新規アカウント1",
+      xId: "@new_account",
+      role: "",
+      purpose: "",
+      rules: []
     };
     setAccounts([blankAccount]);
     setSelectedAccountId("account-custom-1");
@@ -472,10 +459,10 @@ export default function App() {
 
   // Multi-Account Profile Management
   const handleAddAccount = () => {
-    setNewAccName("test");
-    setNewAccXId("test");
-    setNewAccRole("test");
-    setNewAccPurpose("test");
+    setNewAccName("");
+    setNewAccXId("");
+    setNewAccRole("");
+    setNewAccPurpose("");
     setShowAddModal(true);
   };
 
@@ -489,11 +476,7 @@ export default function App() {
       xId: formattedXId,
       role: newAccRole.trim(),
       purpose: newAccPurpose.trim(),
-      rules: [
-        "返信は45〜90文字程度（厳守）",
-        "相手を傷つけず、温かく寄り添う自然な返信にする",
-        "「絶対」「必ず」などの誇大・断定表現は使用禁止"
-      ]
+      rules: []
     };
     setAccounts(prev => [...prev, newAcc]);
     setSelectedAccountId(newId);

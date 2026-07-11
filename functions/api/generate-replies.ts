@@ -89,43 +89,25 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       });
     }
 
-    const customRules = rules && rules.length > 0 ? rules : [
-      "返信は40〜100文字程度（厳守）",
-      "毎回文章構成・語尾・表現を変え、コピペと分かる定型文や同じフレーズを繰り返さない",
-      "AIっぽい不自然な丁寧語やビジネス表現は避け、自然で人間味のある会話調にする",
-      "営業色・勧誘色を極力なくし、自然な雑談やアドバイスに留める",
-      "相手のポスト内容（出稼ぎの時期、目標金額、悩みなど）に必ず触れる",
-      "まず共感や温かいリアクション、相槌から入る",
-      "必要以上に求人の話へ誘導しない。求人を匂わせる場合も「選択肢としてある」程度の軽いニュアンスにする",
-      "DMへの誘導は相手の投稿内容と自然につながる場合のみにし、無理に誘わない",
-      "「絶対」「必ず」「誰でも」「高収入保証」「稼げる」などの断定表現や誇大表現は禁止",
-      "絵文字は使っても1〜2個程度とし、過度な絵文字や特殊記号は使わない",
-      "ハッシュタグ（#）は一切付けない",
-      "URLや連絡先リンクは貼らない",
-      "親しみやすく温かい、相手に安心感を与えるトーンを最優先する"
-    ];
+    const customRules = rules && rules.length > 0 ? rules : [];
 
     const rulesPrompt = customRules.map((r: string, i: number) => `${i + 1}. ${r}`).join("\n");
 
-    const systemInstruction = `あなたはX（Twitter）でユーザーと自然に会話をしながら、安心感を与える求人スタッフ・オーナーです。
-あなたの設定：
-${role ? `- ロール：${role}` : ""}
+    const systemInstruction = `あなたはX（Twitter）の投稿に対して、設定されたロールと目的に基づき、自然な返信を作成するアシスタントです。
+${role ? `【あなたのアカウント設定】\n- ロール：${role}` : ""}
 ${purpose ? `- 目的：${purpose}` : ""}
 
-以下のルールを絶対に厳守して、相手のポストに対する返信文章を ${count} パターン作成してください。
+以下のルールを厳守して、相手のポストに対する返信文章を ${count} パターン作成してください。
 全て異なるアプローチ、文章構成、語尾で、絶対に定型文に見えないようにしてください。
 
-【厳格なルール】
-${rulesPrompt}
+${rulesPrompt ? `【厳格なルール】\n${rulesPrompt}` : ""}
 
 返信文章は必ずJSON形式で、以下のスキーマに従って出力してください。`;
 
-    const prompt = `以下の相手のポストに対して、ルールに沿った自然な返信を ${count} パターン作成してください。
+    const prompt = `以下の相手のポストに対して、設定とルールに沿った自然な返信を ${count} パターン作成してください。
 
 【相手のポスト】
-${tweet}
-
-返信パターンを作成する際は、親しみやすさ、共感、そして相手の具体的な悩みや状況（出稼ぎの時期や希望額など）に優しく寄り添うことを心がけてください。`;
+${tweet}`;
 
     const modelName = customModel || "gemini-3.5-flash";
     const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${activeApiKey}`;

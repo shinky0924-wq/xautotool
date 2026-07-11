@@ -152,15 +152,17 @@ function startLocalServer() {
       const role = staffInfo?.role || "";
       const purpose = staffInfo?.purpose || "";
 
+      const rulesList = rules && rules.length > 0 ? rules : [];
+      const rulesPrompt = rulesList.map((r, i) => `${i + 1}. ${r}`).join('\n');
+
       const response = await ai.models.generateContent({
         model: "gemini-3.5-flash",
-        contents: `以下の相手のポストに対して、ルールに沿った自然な返信を ${count} パターン作成してください。\n\n【相手のポスト】\n${tweet}`,
+        contents: `以下の相手のポストに対して、設定とルールに沿った自然な返信を ${count} パターン作成してください。\n\n【相手のポスト】\n${tweet}`,
         config: {
-          systemInstruction: `あなたはX（Twitter）でユーザーと自然に会話をしながら、安心感を与える求人スタッフ・オーナーです。\n` +
-            (role ? `ロール: ${role}\n` : "") +
-            (purpose ? `目的: ${purpose}\n` : "") +
-            `\n以下のルールを絶対に厳守してください:\n` +
-            rules.map((r, i) => `${i+1}. ${r}`).join('\n'),
+          systemInstruction: `あなたはX（Twitter）の投稿に対して、設定されたロールと目的に基づき、自然な返信を作成するアシスタントです。\n` +
+            (role ? `【あなたのアカウント設定】\n- ロール: ${role}\n` : "") +
+            (purpose ? `- 目的: ${purpose}\n` : "") +
+            (rulesPrompt ? `\n以下のルールを絶対に厳守してください:\n${rulesPrompt}` : ""),
           responseMimeType: "application/json",
           responseSchema: {
             type: "OBJECT",
