@@ -14,8 +14,8 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       });
     }
 
-    const role = staffInfo?.role || "飛田新地のオーナー";
-    const purpose = staffInfo?.purpose || "自分の飛田新地のお店で働いてくれる女性を勧誘したい。条件：15分5000円、高単価、簡単サービス。";
+    const role = staffInfo?.role || "";
+    const purpose = staffInfo?.purpose || "";
 
     // Obtain API key: custom key from request body, or environment variable configured in Cloudflare Pages Dashboard
     const activeApiKey = customApiKey || context.env.GEMINI_API_KEY;
@@ -41,7 +41,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
         "人生一度きりだし、短期間で目標額を決めて集中してやるのも一つの選択肢です。",
         "昼職との両立とか、自分の体調やスケジュールを最優先にできる環境って意外と大事だったりします。",
         "私の周りでも、最初は不安だったけど一歩踏み出して生活が激変した子が本当に多いです。",
-        "15分5000円からスタートできて、高単価でシンプルなサービスだから未経験でもみんなすぐ馴染めてますよ。",
+        "まずは無理のない範囲で、少しずつ自分のペースで進めていくのが一番だと思います。",
         "やっぱり自分を一番大切にしてほしいです。もし息詰まったら、違う環境を覗いてみるのも手ですよ。"
       ];
 
@@ -109,8 +109,8 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
 
     const systemInstruction = `あなたはX（Twitter）でユーザーと自然に会話をしながら、安心感を与える求人スタッフ・オーナーです。
 あなたの設定：
-- ロール：${role}
-- 目的：${purpose}
+${role ? `- ロール：${role}` : ""}
+${purpose ? `- 目的：${purpose}` : ""}
 
 以下のルールを絶対に厳守して、相手のポストに対する返信文章を ${count} パターン作成してください。
 全て異なるアプローチ、文章構成、語尾で、絶対に定型文に見えないようにしてください。

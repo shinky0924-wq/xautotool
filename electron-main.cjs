@@ -103,7 +103,7 @@ function startLocalServer() {
           "人生一度きりだし、短期間で目標額を決めて集中してやるのも一つの選択肢です。",
           "昼職との両立とか、自分の体調やスケジュールを最優先にできる環境って意外と大事だったりします。",
           "私の周りでも、最初は不安だったけど一歩踏み出して生活が激変した子が本当に多いです。",
-          "15分5000円からスタートできて、高単価でシンプルなサービスだから未経験でもみんなすぐ馴染めてますよ。",
+          "まずは無理のない範囲で、少しずつ自分のペースで進めていくのが一番だと思います。",
           "やっぱり自分を一番大切にしてほしいです。もし息詰まったら、違う環境を覗いてみるのも手ですよ。"
         ];
 
@@ -149,14 +149,18 @@ function startLocalServer() {
       }
 
       const ai = new GoogleGenAI({ apiKey });
-      const role = staffInfo?.role || "飛田新地のオーナー";
-      const purpose = staffInfo?.purpose || "自分の飛田新地のお店で働いてくれる女性を勧誘したい";
+      const role = staffInfo?.role || "";
+      const purpose = staffInfo?.purpose || "";
 
       const response = await ai.models.generateContent({
         model: "gemini-3.5-flash",
         contents: `以下の相手のポストに対して、ルールに沿った自然な返信を ${count} パターン作成してください。\n\n【相手のポスト】\n${tweet}`,
         config: {
-          systemInstruction: `あなたはX（Twitter）でユーザーと自然に会話をしながら、安心感を与える求人スタッフ・オーナーです。\nロール: ${role}\n目的: ${purpose}\n\n以下のルールを絶対に厳守してください:\n${rules.map((r, i) => `${i+1}. ${r}`).join('\n')}`,
+          systemInstruction: `あなたはX（Twitter）でユーザーと自然に会話をしながら、安心感を与える求人スタッフ・オーナーです。\n` +
+            (role ? `ロール: ${role}\n` : "") +
+            (purpose ? `目的: ${purpose}\n` : "") +
+            `\n以下のルールを絶対に厳守してください:\n` +
+            rules.map((r, i) => `${i+1}. ${r}`).join('\n'),
           responseMimeType: "application/json",
           responseSchema: {
             type: "OBJECT",

@@ -734,11 +734,11 @@ export default function App() {
           explanation: "【ローカル生成 fallback】設定された「公式検証済ベストアンサー」を適用しています。"
         },
         {
-          text: "7月後半のご予定ですね！1日10万目標なら、飛田新地の短時間でシンプルな接客も選択肢の一つかもです。未経験の方でも安心して動ける環境なので、雰囲気だけでも気になったら気軽に声かけてくださいね。",
+          text: "7月後半のご予定ですね！1日10万目標なら、短時間で自分のペースで進められるお仕事も選択肢の一つかもです。未経験の方でも安心して動ける環境なので、雰囲気だけでも気になったら気軽に声かけてくださいね。",
           explanation: "【ローカル生成 fallback】「未経験でも安心」という安心感を付与しつつ、相手の希望金額に対して「短時間でシンプル」と優しくアピール。"
         },
         {
-          text: "出稼ぎのご相談ですね！7月後半はかなり賑わう時期です。10万目標でしたら、飛田で短時間でサクッとできるお仕事が合うかもしれません。詳しい内容やお店の様子など、気軽になんでも聞いてくださいね。",
+          text: "出稼ぎのご相談ですね！7月後半はかなり賑わう時期です。10万目標でしたら、短時間で効率よくサクッとできるお仕事が合うかもしれません。詳しい内容やお店の様子など、気軽になんでも聞いてくださいね。",
           explanation: "【ローカル生成 fallback】質問の出稼ぎ時期（7月後半）と目標額にマッチ。敷居を下げて安心感を与えるフレーズ。"
         }
       ];
@@ -749,7 +749,7 @@ export default function App() {
           explanation: "【ローカル生成 fallback】共感から入り、自然な雑談のトーンで短時間ワークの選択肢を提供しています。"
         },
         {
-          text: "短期の出稼ぎ、色々と探されてるのですね！サクッと動きやすいお仕事なら、飛田の短時間でシンプルなお仕事が合うかもしれません。女の子第一の明るいお店なので、気になることがあれば気軽に聞いてください。",
+          text: "短期の出稼ぎ、色々と探されてるのですね！サクッと動きやすいお仕事なら、短時間でシンプルなお仕事が合うかもしれません。女の子第一の明るいお店なので、気になることがあれば気軽に聞いてください。",
           explanation: "【ローカル生成 fallback】「女の子第一」と「短時間でシンプル」というワードで安心感を押し出したお返事です。"
         }
       ];
@@ -1832,7 +1832,7 @@ export default function App() {
                   type="text"
                   value={role}
                   onChange={(e) => handleRoleChange(e.target.value)}
-                  placeholder="例: 飛田新地のオーナー"
+                  placeholder="例: 採用担当・スカウト"
                   className="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-sm text-slate-800 focus:outline-hidden focus:ring-2 focus:ring-rose-200"
                 />
               </div>
@@ -1844,7 +1844,7 @@ export default function App() {
                   type="text"
                   value={purpose}
                   onChange={(e) => handlePurposeChange(e.target.value)}
-                  placeholder="例: 15分5000円、簡単サービス、DMへ誘導"
+                  placeholder="例: 新規メンバーの相談にのる、お仕事のアドバイス"
                   className="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-sm text-slate-800 focus:outline-hidden focus:ring-2 focus:ring-rose-200"
                 />
               </div>
@@ -2894,7 +2894,7 @@ npx wrangler pages dev dist --compatibility-date=2024-03-01 --binding GEMINI_API
                   value={newAccName}
                   onChange={(e) => setNewAccName(e.target.value)}
                   className="w-full bg-slate-50 hover:bg-slate-100/50 focus:bg-white border border-slate-200 focus:border-rose-500 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-hidden transition-all"
-                  placeholder="例：新規スカウト, 飛田紹介スタッフ"
+                  placeholder="例：新規スカウト, お仕事紹介スタッフ"
                 />
               </div>
 
@@ -2923,7 +2923,7 @@ npx wrangler pages dev dist --compatibility-date=2024-03-01 --binding GEMINI_API
                   value={newAccRole}
                   onChange={(e) => setNewAccRole(e.target.value)}
                   className="w-full bg-slate-50 hover:bg-slate-100/50 focus:bg-white border border-slate-200 focus:border-rose-500 rounded-xl px-3 py-2 text-xs text-slate-800 focus:outline-hidden transition-all"
-                  placeholder="例：お仕事アドバイザー, 飛田新地のオーナー"
+                  placeholder="例：お仕事アドバイザー, 採用担当"
                 />
               </div>
 
